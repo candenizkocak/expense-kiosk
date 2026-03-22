@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Light theme (default) — values are R G B channels */
+  :root {
+    --kiosk-bg: 248 248 250;
+    --kiosk-surface: 255 255 255;
+    --kiosk-border: 228 228 231;
+    --kiosk-accent: 22 163 74;
+    --kiosk-accent-muted: 21 128 61;
+    --kiosk-danger: 220 38 38;
+    --kiosk-warning: 217 119 6;
+    --kiosk-text: 24 24 27;
+    --kiosk-muted: 113 113 122;
+  }
+
+  /* Dark theme */
+  .dark {
+    --kiosk-bg: 10 10 11;
+    --kiosk-surface: 20 20 22;
+    --kiosk-border: 39 39 42;
+    --kiosk-accent: 34 197 94;
+    --kiosk-accent-muted: 22 163 74;
+    --kiosk-danger: 239 68 68;
+    --kiosk-warning: 245 158 11;
+    --kiosk-text: 250 250 250;
+    --kiosk-muted: 161 161 170;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-kiosk-bg text-kiosk-text antialiased;
+    transition: background-color 0.2s, color 0.2s;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+      bg-kiosk-accent text-white font-semibold rounded-xl
+      hover:bg-kiosk-accent-muted active:scale-[0.98]
+      transition-all duration-150 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+      bg-kiosk-danger/10 text-kiosk-danger border border-kiosk-danger/30
+      font-semibold rounded-xl hover:bg-kiosk-danger/20 active:scale-[0.98]
+      transition-all duration-150 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+      bg-kiosk-surface text-kiosk-muted border border-kiosk-border
+      font-medium rounded-xl hover:text-kiosk-text hover:border-kiosk-muted/50
+      active:scale-[0.98] transition-all duration-150;
+  }
+
+  .card {
+    @apply bg-kiosk-surface border border-kiosk-border rounded-2xl p-6
+      transition-colors duration-200;
+  }
+
+  .input-field {
+    @apply w-full bg-kiosk-bg border border-kiosk-border rounded-xl px-4 py-3
+      text-kiosk-text placeholder:text-kiosk-muted/50
+      focus:outline-none focus:border-kiosk-accent/50 focus:ring-1 focus:ring-kiosk-accent/20
+      transition-colors;
+  }
+
+  .badge-pending {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+      bg-kiosk-warning/10 text-kiosk-warning border border-kiosk-warning/20;
+  }
+
+  .badge-approved {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+      bg-kiosk-accent/10 text-kiosk-accent border border-kiosk-accent/20;
+  }
+
+  .badge-rejected {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+      bg-kiosk-danger/10 text-kiosk-danger border border-kiosk-danger/20;
+  }
+}

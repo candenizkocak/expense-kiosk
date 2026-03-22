@@ -1,0 +1,18 @@
+[Unit]
+Description=Expense Kiosk Hardware Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/expense-kiosk/pi-daemon
+ExecStart=/home/pi/expense-kiosk/pi-daemon/venv/bin/python pi_daemon.py
+Restart=always
+RestartSec=5
+Environment=DAEMON_PORT=8000
+
+# For development/testing without hardware:
+# Environment=MOCK_HARDWARE=1
+
+[Install]
+WantedBy=multi-user.target
