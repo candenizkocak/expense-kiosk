@@ -175,7 +175,7 @@ def _run_gemini(image_base64: str) -> dict:
     image_bytes = base64.b64decode(image_base64)
 
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-3-flash-preview",
         contents=[
             {
                 "role": "user",
@@ -187,7 +187,7 @@ def _run_gemini(image_base64: str) -> dict:
         ],
     )
 
-    return _parse_ocr_response(response.text, model_used="gemini-2.0-flash")
+    return _parse_ocr_response(response.text, model_used="gemini-3-flash-preview")
 
 
 # ---------------------------------------------------------------------------
