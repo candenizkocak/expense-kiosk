@@ -2,7 +2,7 @@
 Expense Kiosk — Receipt OCR Service (Modal.com)
 
 Primary:  Qwen2.5-VL-7B-Instruct on A10G GPU
-Fallback: Google Gemini 2.0 Flash (if Qwen fails or for quick testing)
+Fallback: Google Gemini 3 Flash Preview (if Qwen fails or for quick testing)
 
 Deploy:
     modal deploy modal_ocr.py
@@ -161,7 +161,7 @@ class QwenOCR:
 # ---------------------------------------------------------------------------
 
 def _run_gemini(image_base64: str) -> dict:
-    """Fallback: call Gemini 2.0 Flash via the google-genai SDK."""
+    """Fallback: call Gemini 3 Flash Preview via the google-genai SDK."""
     import os
     from google import genai
 
